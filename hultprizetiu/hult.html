@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html lang="en" class="antialiased scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <title>Hult Prize – Techno India University</title>
+    <meta
+      name="description"
+      content="Hult Prize at Techno India University – empowering students to build entrepreneurial solutions for global challenges."
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Keep your existing CSS (from the mirrored project) -->
+    <link
+      rel="stylesheet"
+      href="_next/static/css/61f992b4fc4ace9e.css"
+      data-precedence="next"
+    />
+       
+    <!-- Simple custom styles for slider + flip cards -->
+    <style>
+      /* HERO SLIDER */
+      .hero-slider {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+      }
+      .hero-slide {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        transform: translateX(10px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .hero-slide.active {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      .hero-slide-bg {
+        position: absolute;
+        inset: 0;
+        background-size: cover;
+        background-position: center;
+        opacity: 0.25;
+        filter: blur(1px);
+      }
+      .hero-slide-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          135deg,
+          rgba(46, 49, 130, 0.85) 0%,
+          rgba(138, 40, 144, 0.65) 50%,
+          rgba(255, 50, 155, 0.85) 100%
+        );
+      }
+      .hero-content {
+        position: relative;
+        z-index: 10;
+      }
+
+      /* DOTS */
+      .slider-dot {
+        height: 10px;
+        border-radius: 999px;
+        transition: all 0.3s ease;
+      }
+      .slider-dot.active {
+        width: 32px;
+        background-color: white;
+      }
+      .slider-dot.inactive {
+        width: 8px;
+        background-color: rgba(255, 255, 255, 0.4);
+      }
+
+      /* FLIP CARDS (Kept for other potential use, but not active in Team section) */
+      .team-card {
+        perspective: 1000px;
+      }
+      .team-card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transform-style: preserve-3d;
+        transition: transform 0.8s ease;
+      }
+      .team-card.flipped .team-card-inner {
+        transform: rotateY(180deg);
+      }
+      .team-face {
+        position: absolute;
+        inset: 0;
+        backface-visibility: hidden;
+      }
+      .team-face.back {
+        transform: rotateY(180deg);
+      }
+
+      /* Copied from i2.html for compatibility */
+      :root {
+        --brand-pink: #ff329b;
+        --brand-blue: #2e3182;
+        --brand-deep: #0b1220;
+      }
+      .glass {
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        background: rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+      }
+
+      .glass-card {
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        background: rgba(255, 255, 255, 0.95);
+      }
+
+      .gradient-mesh {
+        background: radial-gradient(
+            circle at top left,
+            rgba(255, 50, 155, 0.14),
+            transparent 55%
+          ),
+          radial-gradient(
+            circle at bottom right,
+            rgba(46, 49, 130, 0.18),
+            transparent 55%
+          ),
+          #ffffff;
+      }
+      .shadow-soft {
+        box-shadow: 0 14px 40px rgba(15, 23, 42, 0.18);
+      }
+    </style>
+  </head>
+
+  <body class="font-sans bg-background text-foreground">
+    <main class="min-h-screen">
+      <!-- NAVBAR -->
+      <header
+        class="navbar-fixed-height fixed top-0 left-0 right-0 z-50 transition-colors duration-200 bg-black/90 backdrop-blur-sm sm:backdrop-blur shadow-lg"
+        style="height: 64px; min-height: 64px; max-height: 64px"
+      >
+        <div class="w-full px-4 sm:px-6 md:px-8">
+          <div
+            style="height: 64px; min-height: 64px; max-height: 64px"
+            class="flex items-center justify-between"
+          >
+            <!-- Logo + Title -->
+            <div class="flex items-center gap-3">
+              <a href="#home">
+                <img
+                  alt="Hult Prize Logo"
+                  loading="lazy"
+                  width="40"
+                  height="40"
+                  class="h-10 w-auto transition-transform hover:scale-110"
+                  style="color: transparent"
+                  src="_next/HultPrizeLogo-White7a3c.png?url=%2FHult%20Prize%20Logo%20-%20White.png&amp;w=96&amp;q=75"
+                />
+              </a>
+              <div class="h-8 w-px bg-gray-300"></div>
+              <span
+                class="font-sans font-semibold text-sm tracking-tight text-white"
+              >
+                Techno India University
+              </span>
+            </div>
+
+            <!-- Desktop Nav (Copied from i2.html and adapted) -->
+            <nav class="hidden md:flex items-center gap-6">
+              <a
+                class="text-sm font-sans font-medium relative group no-underline text-white"
+                href="#home"
+                >Home
+                <span
+                  class="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-pink transition-all duration-300 group-hover:w-full"
+                ></span>
+              </a>
+              <a
+                class="text-sm font-sans font-medium relative group no-underline text-white"
+                href="#about"
+                >About Us
+                <span
+                  class="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-pink transition-all duration-300 group-hover:w-full"
+                ></span>
+              </a>
+              <a
+                class="text-sm font-sans font-medium relative group no-underline text-white"
+                href="#team"
+                >Meet Our Squad
+                <span
+                  class="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-pink transition-all duration-300 group-hover:w-full"
+                ></span>
+              </a>
+              <a
+                class="text-sm font-sans font-medium relative group no-underline text-white"
+                href="#partner"
+                >Partner With Us
+                <span
+                  class="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-pink transition-all duration-300 group-hover:w-full"
+                ></span>
+              </a>
+              <a
+                class="text-sm font-sans font-medium relative group no-underline text-white"
+                href="#resources"
+                >Resources
+                <span
+                  class="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-pink transition-all duration-300 group-hover:w-full"
+                ></span>
+              </a>
+              <a
+                class="text-sm font-sans font-medium relative group no-underline text-white"
+                href="#contact"
+                >Contact Us
+                <span
+                  class="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-pink transition-all duration-300 group-hover:w-full"
+                ></span>
+              </a>
+              <a
+  href="prize.html"
+  class="px-4 py-2 rounded-xl bg-brand-pink text-brand-blue font-semibold shadow-none"
+>
+  Join Us
+</a>
+
+
+            <!-- Mobile Menu Button (from i2.html) -->
+            <button
+              id="mobile-menu-btn"
+              aria-label="Toggle menu"
+              class="md:hidden inline-flex items-center justify-center rounded-xl p-2 transition-colors border border-white/30 bg-white/10"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-menu text-white"
+              >
+                <line x1="4" x2="20" y1="12" y2="12"></line>
+                <line x1="4" x2="20" y1="6" y2="6"></line>
+                <line x1="4" x2="20" y1="18" y2="18"></line>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Mobile Menu (from i2.html) -->
+          <nav
+            id="mobile-menu"
+            class="md:hidden hidden flex-col gap-1 pb-3 text-sm"
+          >
+            <a
+              href="#home"
+              class="block px-3 py-2 text-white rounded-lg hover:bg-white/10 no-underline"
+            >
+              Home
+            </a>
+            <a
+              href="#about"
+              class="block px-3 py-2 text-white rounded-lg hover:bg-white/10 no-underline"
+            >
+              About Us
+            </a>
+            <a
+              href="#team"
+              class="block px-3 py-2 text-white rounded-lg hover:bg-white/10 no-underline"
+            >
+              Meet Our Squad
+            </a>
+            <a
+              href="#partner"
+              class="block px-3 py-2 text-white rounded-lg hover:bg-white/10 no-underline"
+            >
+              Partner With Us
+            </a>
+            <a
+              href="#resources"
+              class="block px-3 py-2 text-white rounded-lg hover:bg-white/10 no-underline"
+            >
+              Resources
+            </a>
+            <a
+              href="#contact"
+              class="block px-3 py-2 text-white rounded-lg hover:bg-white/10 no-underline"
+            >
+              Contact Us
+            </a>
+            <a
+              href="prize.html"
+              class="block px-3 py-2 text-brand-pink font-semibold rounded-lg border border-brand-pink/60 mt-1 no-underline"
+            >
+              Join Us
+            </a>
+          </nav>
+        </div>
+      </header>
+      <div class="h-16 sm:h-16"></div>
+
+      <!-- HERO SECTION WITH SLIDER -->
+<section id="home" class="scroll-mt-24">
+  <section
+    class="hero-slider"
+    style="
+      background: linear-gradient(
+        135deg,
+        rgba(46, 49, 130, 0.95) 0%,
+        rgba(138, 40, 144, 0.9) 50%,
+        rgba(255, 50, 155, 0.95) 100%
+      );
+    "
+  >
+
+      <!-- Slide 2: Hult Prize at TIU -->
+    <div class="hero-slide no-bg" data-slide="0">
+  <div
+    class="hero-slide-bg"
+    style="background-image: url('images/tiu1.jpg');"
+  ></div>
+  <div 
+    class="hero-slide-overlay"
+    style="background: rgba(0, 0, 0, 0.45);"
+  ></div>
+
+
+  <!-- REMOVE OVERLAY -->
+  <!-- <div class="hero-slide-overlay"></div> -->
+
+  <div class="hero-content mx-auto max-w-5xl px-4 sm:px-6">
+    <div class="text-center md:text-left max-w-2xl space-y-4 text-white">
+      <h1
+        class="text-balance font-sans font-bold tracking-tight text-center"
+        style="font-size: clamp(2.3rem, 5vw, 3.8rem)"
+      >
+        Hult Prize at Techno India University
+      </h1>
+       <p class="text-base sm:text-lg md:text-xl text-white/90 leading-relaxed font-semibold">
+        At TIU, our Hult Prize chapter is building a hub of impact-driven
+        innovation, where students turn ideas into real solutions for people
+        and the planet.
+      </p>
+      <p class="text-sm sm:text-base md:text-lg text-white/85 leading-relaxed font-semibold">
+        Collaborate across departments, get mentored, and showcase your
+        ideas on a global stage.
+      </p>
+    </div>
+  </div>
+</div>
+<style>
+  .hero-slide.no-bg {
+    background: none !important;
+  }
+  .hero-slide.no-bg .hero-slide-bg {
+    opacity: 1 !important;
+  }
+</style>
+  
+  
+  
+  
+  
+  <div class="hero-slide no-bg" data-slide="1">
+  <div
+    class="hero-slide-bg"
+    style="background-image: url('images/banner.jpg');"
+  ></div>
+  <div 
+    class="hero-slide-overlay"
+    style="background: rgba(0, 0, 0, 0.45);"
+  ></div>
+
+
+  <!-- REMOVE OVERLAY -->
+  <!-- <div class="hero-slide-overlay"></div> -->
+
+  <div class="hero-content mx-auto max-w-5xl px-4 sm:px-6">
+    <div class="text-center md:text-left max-w-2xl space-y-4 text-white">
+      <h1
+        class="text-balance font-sans font-bold tracking-tight text-center"
+        style="font-size: clamp(2.3rem, 5vw, 3.8rem)"
+      >
+         One million to change the world
+      </h1>
+       <p class="text-base sm:text-lg md:text-xl text-white/90 leading-relaxed font-semibold">
+        The Hult Prize is a global movement that inspires students to build
+            social enterprises solving the world’s most pressing challenges —
+            combining business, innovation, and impact.
+</p>
+      
+    <p class="text-sm sm:text-base md:text-lg text-white/85 leading-relaxed font-semibold">
+  From campus rounds to global finals, teams pitch sustainable ideas
+  that can transform lives and communities.
+</p>
+    </div>
+  </div>
+</div>
+<style>
+  .hero-slide.no-bg {
+    background: none !important;
+  }
+  .hero-slide.no-bg .hero-slide-bg {
+    opacity: 1 !important;
+  }
+  .hero-slide-bg,
+.hero-slide-overlay {
+  pointer-events: none !important;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 50 !important;
+  pointer-events: auto !important;
+}
+
+</style>
+
+
+    
+
+<div class="hero-slide no-bg" data-slide="2">
+  <div
+    class="hero-slide-bg"
+    style="background-image: url('images/tiu2.jpg');"
+  ></div>
+  <div 
+    class="hero-slide-overlay"
+    style="background: rgba(0, 0, 0, 0.45);"
+  ></div>
+
+
+  <!-- REMOVE OVERLAY -->
+  <!-- <div class="hero-slide-overlay"></div> -->
+
+  <div class="hero-content mx-auto max-w-5xl px-4 sm:px-6">
+    <div class="text-center md:text-left max-w-2xl space-y-4 text-white">
+      <h1
+        class="text-balance font-sans font-bold tracking-tight text-center"
+        style="font-size: clamp(2.3rem, 5vw, 3.8rem)"
+      >
+        Join the Hult Prize Team at TIU
+      </h1>
+       <p class="text-base sm:text-lg md:text-xl text-white/90 leading-relaxed font-semibold">
+        Be part of the core student team that runs workshops, builds
+            community, and hosts the Hult Prize On Campus program.
+      </p>
+      <p class="text-sm sm:text-base md:text-lg text-white/85 leading-relaxed font-semibold">
+       Learn leadership, event management, and entrepreneurship while
+            working with changemakers across Techno India University.
+      </p>
+      <a
+  href="prize.html"
+  class="px-4 py-2 rounded-xl bg-brand-pink text-brand-blue font-semibold shadow-none"
+>
+  Join Us
+</a>
+    </div>
+  </div>
+</div>
+<style>
+  .hero-slide.no-bg {
+    background: none !important;
+  }
+  .hero-slide.no-bg .hero-slide-bg {
+    opacity: 1 !important;
+  }
+</style>
+
+
+
+    
+    <!-- Dots -->
+    <div
+      class="absolute bottom-4 sm:bottom-8 left-0 right-0 z-30 flex items-center justify-center gap-2"
+      id="slider-dots"
+    >
+      <button
+        class="slider-dot active"
+        aria-label="Go to slide 1"
+        data-go="0"
+      ></button>
+      <button
+        class="slider-dot inactive"
+        aria-label="Go to slide 2"
+        data-go="1"
+      ></button>
+      <button
+        class="slider-dot inactive"
+        aria-label="Go to slide 3"
+        data-go="2"
+      ></button>
+    </div>
+  </section>
+</section>
+
+
+      <!-- ABOUT US -->
+      <section id="about" class="scroll-mt-24">
+        <section class="gradient-mesh relative overflow-hidden">
+          <div
+            class="absolute top-10 right-10 w-64 sm:w-96 h-64 sm:h-96 rounded-full bg-brand-pink/10 blur-3xl"
+          ></div>
+          <div
+            class="mx-auto max-w-6xl px-4 sm:px-6 py-12 sm:py-16 relative z-10"
+          >
+            <div
+              class="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 items-center"
+            >
+              <div class="relative order-1 md:order-2">
+                <!-- Placeholder image; replace with TIU/Hult photo -->
+                <img
+                  src="images/Version 1.jpg"
+                  alt="Hult Prize at TIU event"
+                  class="w-full h-auto rounded-2xl shadow-2xl"
+                  onerror="this.src='https://placehold.co/600x400/2e3182/white?text=Hult+Prize+at+TIU'"
+                />
+              </div>
+              <div class="order-2 md:order-1">
+                <div class="flex items-start gap-3 sm:gap-4">
+                  
+                  <div>
+                    <h2
+                      class="text-3xl sm:text-4xl md:text-5xl font-sans font-bold tracking-tight text-brand-blue text-balance"
+                    >
+                      About Us
+                    </h2>
+                    <p
+                      class="mt-4 sm:mt-6 text-base sm:text-lg leading-relaxed text-gray-700"
+                    >
+                      <p class="mt-4 sm:mt-6 text-base sm:text-lg leading-relaxed text-gray-700">
+  <a 
+    href="https://www.hultprize.org/en/" 
+    class="underline text-brand-black hover:text-brand-pink transition no-underline font-bold"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Hult Prize
+  </a> at Techno India University is a student-led
+                      initiative that empowers students to design
+                      entrepreneurial solutions for global problems aligned with
+                      the UN Sustainable Development Goals.
+                    </p>
+                    <p
+                      class="mt-3 sm:mt-4 text-base sm:text-lg leading-relaxed text-gray-700"
+                    >
+                      We host Info Sessions, Idea Sprints, Mentorship Clinics
+                      and the official Hult Prize On Campus program, helping TIU
+                      students build teams, validate ideas, and pitch with
+                      confidence.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
+
+     <!-- MEET OUR TEAM (PROFESSIONAL 2-MEMBER LAYOUT) -->
+<section id="team" class="scroll-mt-24">
+  <section aria-labelledby="team-heading">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 py-12 sm:py-16">
+      <h2
+        id="team-heading"
+        class="text-3xl sm:text-4xl md:text-5xl font-sans font-bold tracking-tight text-brand-blue text-center sm:text-left mb-8 sm:mb-10 lg:mb-12"
+      >
+        Meet Our Squad
+      </h2>
+
+      <!-- your team cards wrapper starts here -->
+      <div class="grid gap-10 md:grid-cols-2 lg:gap-16">
+        <!-- cards... -->
+      </div>
+    </div>
+  </section>
+</section>
+
+        <div class="flex flex-col items-center text-center md:text-left">
+  <img
+    src="images/sarab.jpg"
+    alt="Campus Director"
+    class="rounded-full w-40 h-40 object-cover shadow-xl border border-gray-200"
+    onerror="this.src='https://placehold.co/350x350/eeeeee/999999?text=Director'"
+  />
+
+  <h3 class="mt-6 mb-2 text-2xl font-semibold text-gray-900">
+    Sarab Bose
+  </h3>
+  <a 
+    href="https://www.linkedin.com/in/sarabbose"
+    target="_blank"
+    class="mt-2 mb-4"
+  >
+    <svg 
+      xmlns="http://www.w3.org/2000/svg" 
+      width="28" 
+      height="28" 
+      fill="#0A66C2" 
+      viewBox="0 0 24 24"
+      class="hover:opacity-80 transition"
+    >
+      <path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.48 1s2.5 1.12 2.5 2.5zM.5 8.5h4V24h-4V8.5zM8.5 8.5h3.8v2.1h.1c.5-1 1.8-2.1 3.7-2.1 4 0 4.8 2.6 4.8 6V24h-4v-6.5c0-1.6 0-3.7-2.3-3.7s-2.7 1.8-2.7 3.6V24h-4V8.5z"/>
+    </svg>
+  </a>
+
+  <h3 class="text-2xl font-semibold text-gray-900">
+    Campus Director
+  </h3>
+
+  <p class="text-sm text-brand-pink font-medium">
+    HULT PRIZE AT TIU
+  </p>
+
+  <p class="mb-6 mt-4 text-sm leading-relaxed text-gray-700 max-w-md">
+    “As Campus Director of the Hult Prize at Techno India University, my vision is to build the strongest and most impactful chapter in India within my tenure. I shall only deliver the best for the best.”
+  </p>
+</div>
+
+
+
+
+              <!-- MEMBER 2 -->
+              <div class="flex flex-col items-center text-center md:text-left">
+                <img
+                  src="images/joyjit.jpg"
+                  alt="Deputy Campus Director"
+                  class="rounded-full w-40 h-40 object-cover shadow-xl border border-gray-200"
+                  onerror="this.src='https://placehold.co/350x350/eeeeee/999999?text=Deputy'"
+                />
+
+                <h3 class="mt-6 mb-2 text-2xl font-semibold text-gray-900">
+                  Joyjit Das
+                </h3>
+                <a 
+    href="https://www.linkedin.com/in/joyjit-das-b0a4b7326?"
+    target="_blank"
+    class="mt-2"
+  >
+    <svg 
+      xmlns="http://www.w3.org/2000/svg" 
+      width="28" 
+      height="28" 
+      fill="#0A66C2" 
+      viewBox="0 0 24 24"
+      class="hover:opacity-80 transition"
+    >
+      <path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.48 1s2.5 1.12 2.5 2.5zM.5 8.5h4V24h-4V8.5zM8.5 8.5h3.8v2.1h.1c.5-1 1.8-2.1 3.7-2.1 4 0 4.8 2.6 4.8 6V24h-4v-6.5c0-1.6 0-3.7-2.3-3.7s-2.7 1.8-2.7 3.6V24h-4V8.5z"/>
+    </svg>
+  </a>
+
+                <h3 class="mt-6 text-2xl font-semibold text-gray-900">
+                  Deputy Campus Director
+                </h3>
+
+                <p class="text-sm text-brand-pink font-medium">
+                  HULT PRIZE AT TIU
+                </p>
+
+                <p class="mb-6 mt-4 text-sm leading-relaxed text-gray-700 max-w-md">
+                  “Hult Prize at TIU is more than a competition — it is a
+                  leadership lab. We invite students to collaborate, experiment
+                  and design solutions that are as kind as they are bold.”
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- PARTNER WITH US (FORM UPDATED) -->
+<section
+  id="partner"
+  class="scroll-mt-24 gradient-mesh relative overflow-hidden"
+>
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 py-12 sm:py-16 relative z-10">
+
+    <h2
+      class="text-2xl sm:text-3xl md:text-4xl font-sans font-bold tracking-tight text-brand-blue text-balance text-center sm:text-left"
+    >
+      Partner With Us
+    </h2>
+
+    <!-- Increased gap between text & form (gap-16) -->
+    <div class="mt-8 sm:mt-10 grid md:grid-cols-2 gap-16">
+
+      <!-- Left Column -->
+      <div class="space-y-4 text-base sm:text-lg text-black">
+        <p>
+          Hult Prize at Techno India University invites brands, companies,
+          startups, NGOs, and ecosystem partners to support the next
+          generation of impact-driven entrepreneurs.
+        </p>
+        <p>
+          You can partner with us through sponsorships, mentorship, jury
+          participation, workshops, and more. Share your details below,
+          and we’ll reach out with a customised partnership deck.
+        </p>
+        <ul class="list-disc list-inside space-y-1 text-black">
+          <li>Brand visibility among high-potential student innovators</li>
+          <li>Access to student-led impact ventures & ideas</li>
+          <li>Speaking & mentoring opportunities</li>
+          <li>Long-term campus collaboration opportunities</li>
+        </ul>
+      </div>
+
+      <!-- FORM -->
+      <form
+        id="partner-form"
+        class="glass-card rounded-2xl p-6 sm:p-7 space-y-6 text-base text-black shadow-soft"
+        style="
+          border: 1px solid transparent;
+          background-image: linear-gradient(white, white),
+            linear-gradient(
+              135deg,
+              rgba(255, 50, 156, 0),
+              rgba(46, 49, 130, 0.2)
+            );
+          background-origin: border-box;
+          background-clip: padding-box, border-box;
+        "
+      >
+        <div>
+          <!-- Larger label -->
+          <label class="block text-sm font-semibold mb-1 text-black">
+            Your Name
+          </label>
+          <input
+            type="text"
+            name="name"
+            required
+            class="w-full rounded-xl px-4 py-3 text-base text-black border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-pink"
+          />
+        </div>
+
+        <div>
+          <label class="block text-sm font-semibold mb-1 text-black">
+            Organisation / Brand
+          </label>
+          <input
+            type="text"
+            name="organisation"
+            required
+            class="w-full rounded-xl px-4 py-3 text-base text-black border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-pink"
+          />
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-6">
+          <div>
+            <label class="block text-sm font-semibold mb-1 text-black">
+              Official Email
+            </label>
+            <input
+              type="email"
+              name="email"
+              required
+              class="w-full rounded-xl px-4 py-3 text-base text-black border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-pink"
+            />
+          </div>
+
+          <div>
+            <label class="block text-sm font-semibold mb-1 text-black">
+              Partnership Type
+            </label>
+            <select
+              name="type"
+              class="w-full rounded-xl px-4 py-3 text-base text-black border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-pink"
+            >
+              <option>Sponsorship</option>
+              <option>Brand Collaboration</option>
+              <option>Mentoring / Jury</option>
+              <option>Workshop / Talk</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-sm font-semibold mb-1 text-black">
+            Your Message / Proposal
+          </label>
+          <textarea
+            name="message"
+            rows="4"
+            class="mb-6 w-full rounded-xl px-4 py-3 text-base text-black border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-pink"
+            placeholder="Tell us how you’d like to partner with Hult Prize at Techno India University..."
+          ></textarea>
+        </div>
+
+        <!-- UPDATED BUTTON -->
+         
+              <div class="flex justify-center">
+                <button
+                  type="submit"
+                  class="w-auto rounded-xl bg-brand-pink text-white font-semibold py-2 px-8 text-sm shadow-md hover:opacity-90 transition"
+                >
+                  Submit
+                </button>
+              </div>
+
+
+        <p
+          id="partner-form-status"
+          class="mt-3 text-sm text-gray-600 hidden text-center"
+        ></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+
+      <!-- NEW "RESOURCES" SECTION -->
+      <section
+        id="resources"
+        class="scroll-mt-24 gradient-mesh relative overflow-hidden"
+      >
+        <div
+          class="mx-auto max-w-6xl px-4 sm:px-6 py-12 sm:py-16 relative z-10"
+        >
+          <h2
+            class="text-2xl sm:text-3xl md:text-4xl font-sans font-bold tracking-tight text-brand-blue text-balance text-center sm:text-left"
+          >
+            Resources
+          </h2>
+          <!-- Pink line removed -->
+
+          <div
+            class="mt-8 sm:mt-10 text-center py-16 bg-white/50 rounded-2xl border border-gray-200/50"
+          >
+            <p class="text-2xl text-gray-500 font-semibold">Coming Soon</p>
+            <p class="mt-2 text-gray-600">
+              We're preparing helpful resources, guides, and toolkits. Check
+              back later!
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" class="scroll-mt-24">
+        <section
+          aria-labelledby="findus-heading"
+          class="gradient-mesh relative overflow-hidden"
+        >
+          <div
+            class="absolute top-10 right-10 w-64 sm:w-96 h-64 sm:h-96 rounded-full bg-brand-pink/10 blur-3xl"
+          ></div>
+          <div
+            class="mx-auto max-w-6xl px-4 sm:px-6 py-12 sm:py-16 relative z-10"
+          >
+            <h2
+              id="findus-heading"
+              class="text-2xl sm:text-3xl md:text-4xl font-sans font-bold tracking-tight text-[color:var(--brand-blue)] text-balance text-center sm:text-left"
+            >
+              Contact Us
+            </h2>
+            <!-- Pink line removed -->
+
+            <div
+              class="mt-8 sm:mt-10 grid gap-6 sm:gap-8 grid-cols-1 md:grid-cols-2"
+            >
+              <!-- Contact Info -->
+              <div class="flex flex-col justify-start">
+                <h3
+                  class="text-lg sm:text-xl font-sans font-semibold text-center sm:text-left"
+                  style="color: #0b1220"
+                >
+                  Techno India University
+                </h3>
+                <p
+                  class="mt-3 leading-relaxed text-center sm:text-left"
+                  style="color: #0b1220"
+                >
+                  EM-4/1, Sector V, Salt Lake,<br />
+                  Kolkata – 700 091, West Bengal, India
+                </p>
+                <div class="mt-4 flex flex-col items-center sm:items-start">
+                  <p
+                    class="text-sm font-sans font-medium flex items-center gap-2"
+                    style="color: #0b1220"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="black"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="lucide lucide-phone"
+                    >
+                      <path
+                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+                      ></path>
+                    </svg>
+                    +91 9123872011
+                  </p>
+                  <p
+                    class="text-sm font-sans font-medium mt-1 flex items-center gap-2"
+                    style="color: #0b1220"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="black"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="lucide lucide-mail"
+                    >
+                      <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                      <path
+                        d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"
+                      ></path>
+                    </svg>
+                    official.hultprize.tiu@gmail.com
+                  </p>
+                </div>
+              </div>
+
+              <!-- Simple map placeholder -->
+              <div class="flex flex-col justify-start mt-6 sm:-mt-8">
+                <div
+                  class="rounded-2xl overflow-hidden border shadow-soft"
+                  style="border-color: rgba(0, 0, 0, 0.1)"
+                >
+                  <iframe
+                    title="Techno India University location"
+                    src="https://maps.google.com/maps?q=Techno%20India%20University%20Salt%20Lake%20Kolkata&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                    class="w-full h-64 sm:h-80"
+                    loading="lazy"
+                  ></iframe>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- FOOTER -->
+      <footer
+        class="bg-black/95 backdrop-blur-md shadow-lg border-t border-white/10"
+      >
+        <div class="w-full py-8 sm:py-12">
+          <div class="px-4 sm:px-6 md:px-8">
+            <div
+              class="flex flex-col md:flex-row items-start justify-between gap-6 sm:gap-8 mb-6 sm:mb-8"
+            >
+              <div class="flex flex-col gap-4">
+                <div class="flex items-center gap-3">
+                  <a href="#home">
+                    <img
+                      alt="Hult Prize Logo"
+                      loading="lazy"
+                      width="48"
+                      height="48"
+                      class="h-10 sm:h-12 w-auto transition-transform hover:scale-110"
+                      style="color: transparent"
+                      src="_next/HultPrizeLogo-White7a3c.png?url=%2FHult%20Prize%20Logo%20-%20White.png&amp;w=96&amp;q=75"
+                    />
+                  </a>
+                  <div class="h-8 w-px bg-white/30"></div>
+                  <div class="flex flex-col">
+                    <span
+                      class="font-sans font-semibold text-white text-xs sm:text-sm tracking-tight"
+                    >
+                      Techno India University
+                    </span>
+                  </div>
+                </div>
+                <p
+                  class="text-xs sm:text-sm font-sans text-white/70 max-w-md leading-relaxed"
+                >
+                  Empowering the next generation of social entrepreneurs at TIU
+                  to build meaningful, scalable solutions for global challenges.
+                </p>
+              </div>
+
+              <div class="flex flex-col gap-3 sm:gap-4">
+                <h3
+                  class="font-sans font-semibold text-white text-xs sm:text-sm mb-1 sm:mb-2"
+                >
+                  Quick Links
+                </h3>
+                <div class="flex flex-col gap-1.5 sm:gap-2">
+                  <a
+                    class="text-xs sm:text-sm font-sans text-white/80 hover:text-white transition-colors duration-300 no-underline"
+                    href="#home"
+                    >Home</a
+                  >
+                  <a
+                    class="text-xs sm:text-sm font-sans text-white/80 hover:text-white transition-colors duration-300 no-underline"
+                    href="#about"
+                    >About Us</a
+                  >
+                  <a
+                    class="text-xs sm:text-sm font-sans text-white/80 hover:text-white transition-colors duration-300 no-underline"
+                    href="#team"
+                    >Meet Our Squad</a
+                  >
+                  <a
+                    class="text-xs sm:text-sm font-sans text-white/80 hover:text-white transition-colors duration-300 no-underline"
+                    href="#partner"
+                    >Partner With Us</a
+                  >
+                  <a
+                    class="text-xs sm:text-sm font-sans text-white/80 hover:text-white transition-colors duration-300 no-underline"
+                    href="#resources"
+                    >Resources</a
+                  >
+                  <a
+                    class="text-xs sm:text-sm font-sans text-white/80 hover:text-white transition-colors duration-300 no-underline"
+                    href="#contact"
+                    >Contact</a
+                  >
+                </div>
+              </div>
+
+              <!-- NEW Socials Section -->
+              <div class="flex flex-col gap-3 sm:gap-4">
+                <h3
+                  class="font-sans font-semibold text-white text-xs sm:text-sm mb-1 sm:mb-2"
+                >
+                  Connect With Us
+                </h3>
+                <div class="flex items-center gap-4">
+                  <a
+                    href="https://www.instagram.com/hultprize__tiu?igsh=a3l1YWltaWxwdWww"
+                    aria-label="Instagram"
+                    class="transition-transform hover:scale-110"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="text-white/80 hover:text-white"
+                    >
+                      <rect
+                        width="20"
+                        height="20"
+                        x="2"
+                        y="2"
+                        rx="5"
+                        ry="5"
+                      ></rect>
+                      <path
+                        d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
+                      ></path>
+                      <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+                    </svg>
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/company/hult-prize-tiu/"
+                    aria-label="LinkedIn"
+                    class="transition-transform hover:scale-110"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="text-white/80 hover:text-white"
+                    >
+                      <path
+                        d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+                      ></path>
+                      <rect width="4" height="12" x="2" y="9"></rect>
+                      <circle cx="4" cy="4" r="2"></circle>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-4 sm:pt-6 border-t border-white/10">
+              <div
+                class="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4"
+              >
+                <p
+                  class="text-xs sm:text-sm font-sans text-white/60 text-center sm:text-left"
+                >
+                  © 2025 Hult Prize at Techno India University. All rights
+                  reserved.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </main>
+
+    <!-- *** NEW *** Mobile Menu Toggle Script -->
+    <script>
+      (function () {
+        const btn = document.getElementById("mobile-menu-btn");
+        const menu = document.getElementById("mobile-menu");
+        if (btn && menu) {
+          btn.addEventListener("click", () => {
+            menu.classList.toggle("hidden");
+          });
+          // Close menu on link click
+          menu.querySelectorAll("a").forEach((link) => {
+            link.addEventListener("click", () => {
+              menu.classList.add("hidden");
+            });
+          });
+        }
+      })();
+    </script>
+
+    <!-- *** NEW *** Partner Form Script -->
+    <script>
+      (function () {
+        // --- SCRIPT URL FOR PARTNER FORM ---
+        // ⚠️ IMPORTANT: Replace this with your *actual* Google Apps Script URL
+        const PARTNER_SCRIPT_URL =
+          "https://script.google.com/macros/s/AKfycbxta3il5zEIboJleyvlC219CGEwp8liS7trMZClpFJVRHlUvTASoY7PWun7ezMmNwb2/exec";
+
+        const partnerForm = document.getElementById("partner-form");
+        const partnerStatusEl = document.getElementById("partner-form-status");
+
+        if (partnerForm) {
+          partnerForm.addEventListener("submit", async (event) => {
+            event.preventDefault();
+            showStatus(
+              partnerStatusEl,
+              "Submitting your query...",
+              "gray",
+              partnerForm.querySelector("button[type='submit']"),
+              "Submitting..."
+            );
+
+            try {
+              await fetch(PARTNER_SCRIPT_URL, {
+                method: "POST",
+                body: new FormData(partnerForm),
+                mode: "no-cors",
+              });
+              showStatus(
+                partnerStatusEl,
+                "Thank you! Your query has been sent.",
+                "green",
+                partnerForm.querySelector("button[type='submit']"),
+                "Submit"
+              );
+              partnerForm.reset();
+            } catch (error) {
+              console.error("Partner Form Error:", error);
+              showStatus(
+                partnerStatusEl,
+                "There was an error. Please try again.",
+                "red",
+                partnerForm.querySelector("button[type='submit']"),
+                "Submit"
+              );
+            }
+          });
+        }
+
+        // --- HELPER FUNCTION TO SHOW MESSAGES ---
+        function showStatus(el, message, color, button, buttonText) {
+          if (el) {
+            el.classList.remove(
+              "hidden",
+              "text-gray-600",
+              "text-green-600",
+              "text-red-600"
+            );
+            el.textContent = message;
+            if (color === "gray") el.classList.add("text-gray-600");
+            if (color === "green") el.classList.add("text-green-600");
+            if (color === "red") el.classList.add("text-red-600");
+          }
+          if (button) {
+            button.disabled = color === "gray";
+            button.textContent = buttonText;
+          }
+        }
+      })();
+    </script>
+
+    <!-- Existing JS for slider -->
+    <script>
+      // HERO SLIDER
+      (function () {
+        const slides = Array.from(document.querySelectorAll(".hero-slide"));
+        const dots = Array.from(document.querySelectorAll(".slider-dot"));
+        const prevBtn = document.getElementById("slider-prev");
+        const nextBtn = document.getElementById("slider-next");
+        let current = 0;
+
+        if (slides.length === 0) return; // Don't run if no slider
+
+        function goToSlide(index) {
+          const total = slides.length;
+          current = (index + total) % total;
+          slides.forEach((slide, i) => {
+            slide.classList.toggle("active", i === current);
+          });
+          dots.forEach((dot, i) => {
+            dot.classList.toggle("active", i === current);
+            dot.classList.toggle("inactive", i !== current);
+          });
+        }
+
+        prevBtn.addEventListener("click", () => goToSlide(current - 1));
+        nextBtn.addEventListener("click", () => goToSlide(current + 1));
+        dots.forEach((dot) => {
+          dot.addEventListener("click", () => {
+            const idx = parseInt(dot.dataset.go, 10);
+            goToSlide(idx);
+          });
+        });
+
+        // Optional auto-slide
+        setInterval(() => {
+          goToSlide(current + 1);
+        }, 8000);
+      })();
+    </script>
+    <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const slides = document.querySelectorAll(".hero-slide");
+    const dots = document.querySelectorAll("#slider-dots .slider-dot");
+    const slider = document.querySelector(".hero-slider");
+    const INTERVAL_MS = 7000; // time between slides
+    let current = 0;
+    let timer = null;
+
+    function setActiveSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle("active", i === index);
+      });
+      dots.forEach((dot, i) => {
+        dot.classList.toggle("active", i === index);
+        dot.classList.toggle("inactive", i !== index);
+      });
+      current = index;
+    }
+
+    function nextSlide() {
+      const next = (current + 1) % slides.length;
+      setActiveSlide(next);
+    }
+
+    function startAuto() {
+      stopAuto();
+      timer = setInterval(nextSlide, INTERVAL_MS);
+    }
+
+    function stopAuto() {
+      if (timer) clearInterval(timer);
+      timer = null;
+    }
+
+    // Dots click navigation
+    dots.forEach((dot) => {
+      dot.addEventListener("click", () => {
+        const index = Number(dot.dataset.go || 0);
+        setActiveSlide(index);
+        startAuto(); // restart timer after manual interaction
+      });
+    });
+
+    // Pause on hover, resume on mouse leave
+    if (slider) {
+      slider.addEventListener("mouseenter", stopAuto);
+      slider.addEventListener("mouseleave", startAuto);
+    }
+
+    // Init
+    setActiveSlide(0);
+    startAuto();
+  });
+</script>
+
+  </body>
+</html>
